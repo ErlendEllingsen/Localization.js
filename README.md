@@ -16,6 +16,7 @@ Javascript platform for localization and globalization of documents, web pages, 
 ##Install
 ###NPM
 ***Note:*** *This is not a node-package, but recommended installation is still through npm.*
+
 `npm install localization-js --save`
 
 ###Zip
