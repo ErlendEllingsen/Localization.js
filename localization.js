@@ -3,7 +3,7 @@
  * Javascript platform for localization and globalization.
  * 
  * @author Erlend Ellingsen <erlend.ame@gmail.com
- * @version 1.0 26.12.2016
+ * @version 1.1.0 26.12.2016
  */
 
 var Localization = function() {
@@ -102,8 +102,19 @@ var Localization = function() {
 
         //end Localization.loadModule
     }
+    
+    this.processKey = function(key) {        
+        if (self.locale[key] == undefined) return undefined; //Handle differently?
+        return self.locale[key]; 
+        //end Localization.processKey
+    }
+    
+    //Alias for processKey
+    this.fetch = function(key) {
+        return self.getTranslation(key);
+    }
 
-    this.processContent = function(text, vars) {
+    this.processText = function(text, vars) {
 
         var workingVar = text; 
         
@@ -117,7 +128,7 @@ var Localization = function() {
 
         return workingVar;
 
-        //end Localization.process
+        //end Localization.processText
     }
 
     //end Localization
