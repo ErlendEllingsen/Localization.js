@@ -1,6 +1,6 @@
 {
   "name": "localization-js",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Javascript platform for localization and globalization of documents, web pages, web applications et cetra. Edit",
   "main": "localization.js",
   "scripts": {
