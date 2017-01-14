@@ -3,7 +3,7 @@
  * Javascript platform for localization and globalization.
  * 
  * @author Erlend Ellingsen <erlend.ame@gmail.com
- * @version 1.1.0 26.12.2016
+ * @version 1.2.0 14.01.2017
  */
 
 var Localization = function() {
@@ -12,6 +12,7 @@ var Localization = function() {
     this.identifier_opening = '#';
     this.identifier_closing = '#';
 
+    this.configpath = '';
     this.config = null;
     this.initialized = false;
 
@@ -29,16 +30,19 @@ var Localization = function() {
 
          try {
 
+             self.configpath = configpath;
+
             function reqListener () {
                 var data = this.responseText;
                 self.config = JSON.parse(data);
                 self.initialized = true;
                 callback();
             }
+            
 
             var oReq = new XMLHttpRequest();
             oReq.addEventListener("load", reqListener);
-            oReq.open("GET", './' + configpath);
+            oReq.open("GET", './' + self.configpath + 'config.json');
             oReq.send();
 
 
@@ -93,7 +97,7 @@ var Localization = function() {
 
             var oReq = new XMLHttpRequest();
             oReq.addEventListener("load", reqListener);
-            oReq.open("GET", './locale/' + self.locale_name + '/' + module);
+            oReq.open("GET", './' + self.configpath + self.locale_name + '/' + module);
             oReq.send();
             
         } catch (e) {
